@@ -29,7 +29,15 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+Features
+Dashboard view displaying JIRA defect tickets.
+Filtering by status (Ongoing, Triage Pending, Waiting, Done, Rejected, Not RCCL Issue), assignee, and date (last week, last month, all time, date range).
+Summary cards showing ticket counts for key statuses.
+Collapsible ticket tables grouped by priority (P1, P2, Other).
+Clickable table rows to open a side panel with ticket details and comments.
+Ability to update ticket state (labels) via buttons in the side panel.
+Ability to add comments to tickets via the side panel.
+Link to open the original JIRA ticket in a new tab.
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
