@@ -1,66 +1,90 @@
-# Vibejira
+# VibeJira
 
-Vibejira is a web application built with **Next.js** that integrates with **Jira** to help manage project issues and workflows seamlessly. It allows users to track defect tickets and interact with Jira's REST APIs.
+A web application to display and interact with JIRA tickets.
+
+## Overview
+
+This project consists of two main parts:
+
+*   **Backend (`backend/`)**: A Node.js/Express application that connects to the JIRA REST API using a Personal Access Token (PAT) to fetch and manipulate ticket data.
+*   **Frontend (`frontend/`)**: A React application built with Create React App and CoreUI v5 for the user interface. It communicates with the backend API.
+
+## Prerequisites
+
+*   Node.js (v16 or later recommended)
+*   npm (usually comes with Node.js)
+*   A JIRA Cloud instance
+*   A JIRA Personal Access Token (PAT) - See [Atlassian Documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) on how to create one. You'll need permissions to read/write JIRA issues.
+
+## Backend Setup (`backend/`)
+
+1.  **Navigate to the backend directory:**
+    ```bash
+    cd backend
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Create a `.env` file:**
+    Create a file named `.env` in the `backend/` directory and add the following variables, replacing the placeholder values with your actual JIRA information:
+
+    ```dotenv
+    # Backend server port
+    PORT=3001
+
+    # Your JIRA Cloud instance base URL
+    JIRA_BASE_URL=https://your-domain.atlassian.net
+
+    # Your JIRA Personal Access Token (PAT)
+    JIRA_PAT=your_jira_personal_access_token_here
+
+    # Frontend URL (for CORS)
+    FRONTEND_ORIGIN=http://localhost:3000
+    ```
+
+4.  **Run the backend (development mode):**
+    ```bash
+    npm run dev
+    ```
+    The backend server will start, typically on `http://localhost:3001`. It uses `nodemon` to automatically restart on file changes.
+
+## Frontend Setup (`frontend/`)
+
+1.  **Navigate to the frontend directory:**
+    ```bash
+    cd ../frontend 
+    # Or from the root: cd frontend
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the frontend:**
+    ```bash
+    npm start
+    ```
+    The React development server will start, and the application should open automatically in your browser, typically at `http://localhost:3000`.
+
+## Running the Application
+
+1.  Start the backend server first (follow Backend Setup steps).
+2.  Start the frontend development server (follow Frontend Setup steps).
+3.  Open your browser to `http://localhost:3000` (or the port specified by the frontend).
 
 ## Features
 
-- **Dashboard View**: Displays Jira defect tickets.
-- **Filtering**: Filter tickets by status (Ongoing, Triage Pending, Waiting, Done, Rejected, Not RCCL Issue), assignee, and date (Last Week, Last Month, All Time, or Custom Date Range).
-- **Summary Cards**: Show ticket counts for key statuses.
-- **Collapsible Ticket Tables**: Group tickets by priority (P1, P2, Other).
-- **Side Panel**: Clickable ticket rows open a side panel with ticket details and comments.
-- **Update Ticket State**: Ability to update ticket states (labels) via buttons in the side panel.
-- **Comment on Tickets**: Add comments to tickets via the side panel.
-- **Link to Original Jira Ticket**: A direct link to open the original Jira ticket in a new tab.
+*   Dashboard view displaying JIRA defect tickets.
+*   Filtering by status (Ongoing, Triage Pending, Waiting, Done, Rejected, Not RCCL Issue), assignee, and date (last week, last month, all time, date range).
+*   Summary cards showing ticket counts for key statuses.
+*   Collapsible ticket tables grouped by priority (P1, P2, Other).
+*   Clickable table rows to open a side panel with ticket details and comments.
+*   Ability to update ticket state (labels) via buttons in the side panel.
+*   Ability to add comments to tickets via the side panel.
+*   Link to open the original JIRA ticket in a new tab.
 
-## Getting Started
-
-Follow these steps to get started with the project.
-
-### 1. Run the Development Server
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-Open http://localhost:3000 with your browser to see the result.
-
-2. Edit the Page
-
-You can start editing the page by modifying app/page.tsx. The page will auto-update as you edit the file.
-
-3. Optimize Fonts
-
-This project uses next/font to automatically optimize and load Geist, a new font family for Vercel.
-
-Learn More
-
-To learn more about Next.js, take a look at the following resources:
-	•	Next.js Documentation - Learn about Next.js features and API.
-	•	Learn Next.js - An interactive tutorial on Next.js.
-
-You can check out the Next.js GitHub repository - Your feedback and contributions are welcome!
-
-Deployment
-
-The easiest way to deploy your Next.js app is to use the Vercel Platform, created by the creators of Next.js.
-
-For more deployment options, check out the Next.js Deployment Documentation.
----
-
-### คำอธิบาย:
-
-- **Features**: รายการคุณสมบัติที่สำคัญของแอปพลิเคชัน
-- **Getting Started**: ขั้นตอนการติดตั้งและรันโปรเจกต์ในเครื่อง
-- **Learn More**: แหล่งข้อมูลเพื่อศึกษาข้อมูลเกี่ยวกับ Next.js เพิ่มเติม
-- **Deployment**: แนวทางการ deploy โปรเจกต์ไปยัง Vercel
-
-คุณสามารถเพิ่มข้อมูลการตั้งค่า API หรือการใช้งาน Jira API ถ้าจำเป็นในส่วน **Getting Started** ได้อีกด้วยครับ 😄
-
-ถ้าต้องการแก้ไขเพิ่มเติมหรือคำแนะนำอื่น ๆ บอกได้เลยครับ!
+// **Note:** The frontend currently uses mock data. Integration with the backend API endpoints is the next step. 
