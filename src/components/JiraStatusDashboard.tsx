@@ -2,7 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 import * as React from "react"
-import { TrendingUp } from "lucide-react"
 import { Label, Pie, PieChart } from "recharts"
 import Loading from '@/components/ui/loading'
 import {
@@ -126,7 +125,15 @@ export default function TicketCard() {
                     </CardContent>
                     <CardFooter className="flex-col gap-2 text-sm">
                         <div className="flex items-center gap-2 font-medium leading-none">
-                            {((issueData?.issues.length ?? 0) / 12).toFixed(2)}% Trending up by this month <TrendingUp className="h-4 w-4" />
+                            {issueData?.issues.length ? (
+                                `${(
+                                    (issueData?.statusCount?.['Done'] ?? 0) /
+                                    (issueData?.issues.length ?? 1) *
+                                    100
+                                ).toFixed(2)}%`
+                            ) : (
+                                '0.00%'
+                            )} Done in this month
                         </div>
                         <div className="leading-none text-muted-foreground">
                             Showing total visitors for the last 12 months
