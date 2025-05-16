@@ -23,7 +23,6 @@ export async function searchMyAssignedIssues(): Promise<JiraIssueSummaryResponse
     const countStatuses = (issues: any[]) => {
         const targetStatuses = ['In Progress', 'Internal-review', 'Done'];
 
-        // ใช้ reduce เพื่อรวมยอดแต่ละ status
         return issues.reduce((acc, issue) => {
             const statusName = issue.fields.status.name;
             if (targetStatuses.includes(statusName)) {
