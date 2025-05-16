@@ -1,4 +1,4 @@
-import { JiraIssueSummary, JiraIssueSummaryResponse } from '@/types/JiraIssueSummary'
+import { JiraIssueSummary, JiraIssueSummaryResponse, JiraRawIssue } from '@/types/JiraIssueSummary'
 
 export async function searchMyAssignedIssues(): Promise<JiraIssueSummaryResponse> {
     const jql = 'assignee = currentUser() ORDER BY updated DESC'
@@ -20,7 +20,7 @@ export async function searchMyAssignedIssues(): Promise<JiraIssueSummaryResponse
     if (!res.ok) throw new Error('Failed to fetch JIRA issues')
 
     const data = await res.json()
-    const countStatuses = (issues: any[]) => {
+    const countStatuses = (issues: JiraRawIssue[]) => {
         const targetStatuses = ['In Progress', 'Internal-review', 'Done'];
 
         return issues.reduce((acc, issue) => {

@@ -14,3 +14,21 @@ export interface JiraIssueSummaryResponse {
     issues: JiraIssueSummary[]
     statusCount: Record<string, number>
 }
+
+export interface JiraRawIssue {
+    key: string;
+    fields: {
+        summary: string;
+        status: {
+            name: string;
+        };
+        issuetype: {
+            name: string;
+        };
+        priority: {
+            name: string;
+        };
+        created: string;
+        updated: string;
+    };
+};
