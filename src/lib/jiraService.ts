@@ -32,7 +32,7 @@ export async function searchMyAssignedIssues(): Promise<JiraIssueSummaryResponse
         }, {} as Record<string, number>);
     };
 
-    const issues: JiraIssueSummary[] = data.issues.map((issue: any) => ({
+    const issues: JiraIssueSummary[] = data.issues.map((issue: JiraRawIssue) => ({
         key: issue.key,
         issueName: issue.fields.summary,
         issueTypeName: issue.fields.issuetype.name,
