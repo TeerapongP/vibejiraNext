@@ -5,7 +5,7 @@ export async function GET() {
     try {
         const tickets = await searchMyAssignedIssues()
         return NextResponse.json(tickets)
-    } catch (err) {
+    } catch {
         return NextResponse.json({ error: 'Jira fetch failed' }, { status: 500 })
     }
 }
